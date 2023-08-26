@@ -1,12 +1,16 @@
 game.StarterGui:SetCore("SendNotification", {
-	Title = "Crack By Monkey";
-	Text = "Monkey Shop ";
-	Duration = "15";
+	Title = "Crack By Pickle Hub";
+	Text = "Crack By Pickle Hub, Noob Trash Hub Name Is Sara Hub";
+	Duration = "100000000000000000";
 	})
-	
+	game.StarterGui:SetCore("SendNotification", {
+	Title = "Code Trâu Bò";
+	Text = "Code Này Beauti3 Đẹp Vc Mà Rách Lazzy Làm Mẹ Gì Biết Beuti";
+	Duration = "100000000000000000";
+	})
 
 local Update =  loadstring(Game:HttpGet"https://relzbloxencryt.xcodehoster.com/DynamicHubLibrary.lua")()
-local Library = Update:Window("Reskin Hub","Blox Fruit",Enum.KeyCode.RightControl);
+local Library = Update:Window("Sara Hub","Blox Fruit",Enum.KeyCode.RightControl);
 local User = Library:Tab("User", "rbxassetid:/")
 local Main = Library:Tab("Main","rbxassetid://")
 local Set = Library:Tab("Setting","rbxassetid://")
