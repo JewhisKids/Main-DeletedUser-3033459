@@ -1,4 +1,3 @@
-
 game.StarterGui:SetCore("SendNotification", {
 	Title = "Crack By Monkey";
 	Text = "Monkey Shop ";
@@ -7,7 +6,7 @@ game.StarterGui:SetCore("SendNotification", {
 	
 
 local Update =  loadstring(Game:HttpGet"https://relzbloxencryt.xcodehoster.com/DynamicHubLibrary.lua")()
-local Library = Update:Window("Sara","Blox Fruit",Enum.KeyCode.RightControl);
+local Library = Update:Window("Reskin Hub","Blox Fruit",Enum.KeyCode.RightControl);
 local User = Library:Tab("User", "rbxassetid:/")
 local Main = Library:Tab("Main","rbxassetid://")
 local Set = Library:Tab("Setting","rbxassetid://")
@@ -9779,22 +9778,624 @@ end)
      local rac = {}
      local allitem = {}
      local total2 = 0
-     while total2
-Guest
-views: 1
-2023-08-26 04:30
+     while total2<total do 
+         local i = 0
+         while i < 25000 and total2<total do 
+             game:GetService("Players").LocalPlayer.PlayerGui.Main.InventoryContainer.Right.Content.ScrollingFrame.CanvasPosition = Vector2.new(0,i)
+             for k,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.InventoryContainer.Right.Content.ScrollingFrame.Frame:GetChildren()) do 
+                 if v:IsA("Frame") and not rac[v.ItemName.Text] and v.ItemName.Visible==true then 
+                     local vaihuhu = GetRaity(v.Background.BackgroundColor3)
+                     if vaihuhu then
+                         print("Rac")
+                         if not allitem[vaihuhu] then 
+                             allitem[vaihuhu] = {}
+                         end
+                         table.insert(allitem[vaihuhu],v:Clone())
+                     end
+                     total2=total2+1
+                     rac[v.ItemName.Text] = true
+                 end
+             end
+             i=i+20
+         end
+         wait()
+     end
+     function GetXY(vec) 
+         return vec*100
+     end
 
-Copy Content
-Download
+     local tvk = Instance.new("UIListLayout")
+     tvk.FillDirection = Enum.FillDirection.Vertical
+     tvk.SortOrder = 2
+     tvk.Padding = UDim.new(0,10)
 
-Raw
+     local Left = Instance.new("Frame",game.Players.LocalPlayer.PlayerGui.BubbleChat)
+     Left.BackgroundTransparency = 1
+     Left.Size = UDim2.new(.5,0,1,0) 
+     tvk.Parent = Left
 
-Embed
-Create free pastes just like this one and get paid. Create paste
-×
-Discord
-Twitter
-YouTube
-Email
-© 2023 PasteDrop
+     local Right = Instance.new("Frame",game.Players.LocalPlayer.PlayerGui.BubbleChat)
+     Right.BackgroundTransparency = 1
+     Right.Size = UDim2.new(.5,0,1,0) 
+     Right.Position = UDim2.new(.6,0,0,0)
+     tvk:Clone().Parent = Right
+     for k,v in pairs(allitem) do 
+         local cac = Instance.new("Frame",Left)
+         cac.BackgroundTransparency = 1
+         cac.Size = UDim2.new(1,0,0,0) 
+         cac.LayoutOrder = table.find(RaityLevel,k)
 
+         local cac2 = Instance.new("Frame",Right)
+         cac2.BackgroundTransparency = 1
+         cac2.Size = UDim2.new(1,0,0,0) 
+         cac2.LayoutOrder = table.find(RaityLevel,k)
+
+         local tvk = Instance.new("UIGridLayout",cac)
+         tvk.CellPadding = UDim2.new(.005,0,.005,0)
+         tvk.CellSize =  UDim2.new(0,70,0,70)
+         tvk.FillDirectionMaxCells = 100
+         tvk.FillDirection = Enum.FillDirection.Horizontal
+
+         local ccc = tvk:Clone()
+         ccc.Parent = cac2
+         for k,v in pairs(v) do 
+             if Items[v.ItemName.Text] and Items[v.ItemName.Text].Mastery then 
+                 if v.ItemLine2.Text~="Accessory" then 
+                     local bucac = v.ItemName:Clone()
+                     bucac.BackgroundTransparency = 1
+                     bucac.TextSize = 10
+                     bucac.TextXAlignment  = 2
+                     bucac.TextYAlignment  = 2
+                     bucac.ZIndex  = 5
+                     bucac.Text = Items[v.ItemName.Text].Mastery
+                     bucac.Size = UDim2.new(.5,0,.5,0)
+                     bucac.Position = UDim2.new(.5,0,.5,0)
+                     bucac.Parent = v
+                 end
+                 v.Parent = cac
+             elseif v.ItemLine2.Text == "Blox Fruit" then 
+                 v.Parent = cac2
+             end
+         end
+         cac.AutomaticSize = 2
+         cac2.AutomaticSize = 2
+     end
+     local ListHuhu = {
+         ["Superhuman"] = Vector2.new(3,2),
+         ["GodHuman"] = Vector2.new(3,2),
+         ["DeathStep"] = Vector2.new(4,3),
+         ["ElectricClaw"] = Vector2.new(2,0),
+         ["SharkmanKarate"] = Vector2.new(0,0),
+         ["DragonTalon"] = Vector2.new(1,5)
+     }
+     local MeleeG = Instance.new("Frame",Left)
+     MeleeG.BackgroundTransparency = 1
+     MeleeG.Size = UDim2.new(1,0,0,0) 
+     MeleeG.LayoutOrder = table.find(RaityLevel,k)
+     MeleeG.AutomaticSize=2
+     MeleeG.LayoutOrder = 100
+     local tvk = Instance.new("UIGridLayout",MeleeG)
+     tvk.CellPadding = UDim2.new(.005,0,.005,0)
+     tvk.CellSize =  UDim2.new(0,70,0,70)
+     tvk.FillDirectionMaxCells = 100
+     tvk.FillDirection = Enum.FillDirection.Horizontal
+
+     local cac = {"Superhuman","ElectricClaw","DragonTalon","SharkmanKarate","DeathStep","GodHuman"}
+     for k,v in pairs(cac) do
+         if ListHuhu[v] and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buy"..v,true) == 1 then 
+             local huhu = Instance.new("ImageLabel",MeleeG)
+             huhu.Image = "rbxassetid://9945562382"
+             huhu.ImageRectSize = Vector2.new(100,100)
+             huhu.ImageRectOffset = ListHuhu[v]*100
+         end
+     end
+     function formatNumber(v)
+         return tostring(v):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
+     end
+     game:GetService("Players").LocalPlayer.PlayerGui.Main.Beli.Position = UDim2.new(0,800,0,500)
+     game:GetService("Players").LocalPlayer.PlayerGui.Main.Level.Position = UDim2.new(0,800,0,550)
+
+     local thieunang = game:GetService("Players").LocalPlayer.PlayerGui.Main.Fragments:Clone()
+     thieunang.Parent = game:GetService("Players").LocalPlayer.PlayerGui.BubbleChat
+     thieunang.Position = UDim2.new(0,800,0.63,0)
+     local n = formatNumber(game.Players.LocalPlayer.Data.Fragments.Value)
+     thieunang.Text = "Ãƒâ€ Ã¢â‚¬â„¢"..n
+     print("Done")
+     pcall(function() 
+         game:GetService("Players").LocalPlayer.PlayerGui.Main.MenuButton:Destroy()
+     end)
+     pcall(function() 
+         game:GetService("Players").LocalPlayer.PlayerGui.Main.HP:Destroy()
+     end)
+     pcall(function() 
+         game:GetService("Players").LocalPlayer.PlayerGui.Main.Energy:Destroy()
+     end)
+     for k,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main:GetChildren()) do 
+         if v:IsA("ImageButton") then 
+             v:Destroy()
+         end
+     end
+     pcall(function() 
+         game:GetService("Players").LocalPlayer.PlayerGui.Main.Compass:Destroy()
+     end)
+ end)
+
+ Misc:Seperator("ðŸ“œ Codes ðŸ“œ")
+ 
+ local x2Code = {
+     "FUDD10",
+     "BIGNEWS",
+     "THEGREATACE",
+     "SUB2GAMERROBOT_EXP1",
+     "StrawHatMaine",
+     "Sub2OfficialNoobie",
+     "SUB2NOOBMASTER123",
+     "Sub2Daigrock",
+     "Axiore",
+     "TantaiGaming",
+     "JCWK",
+     "Starcodeheo",
+     "Sub2Fer999",
+     "Magicbus",
+     "Enyu_is_Pro",
+     "Bluxxy",
+     "KittGaming",
+    }
+ 
+ Misc:Button("Redeem All Codes",function()
+     function RedeemCode(value)
+         game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(value)
+     end
+     for i,v in pairs(x2Code) do
+         RedeemCode(v)
+     end
+ end)
+ 
+ Misc:Dropdown("Selected Codes",{"FUDD10","KittGaming","BIGNEWS","THEGREATACE","SUB2GAMERROBOT_EXP1","StrawHatMaine","Sub2OfficialNoobie","SUB2NOOBMASTER123","Sub2Daigrock","Axiore","TantaiGaming","JCWK","Starcodeheo","Sub2Fer999","Magicbus","Enyu_is_Pro","Bluxxy"},{""},function(value)
+     _G.CodeSelect = value
+ end)
+ 
+ Misc:Button("Redeem Code",function()
+     game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(_G.CodeSelect)
+ end)
+ 
+ Misc:Seperator("ðŸ“Š State ðŸ“Š")
+ 
+ Misc:Dropdown("Select Haki State",{"State 0","State 1","State 2","State 3","State 4","State 5"},{""},function(value)
+     _G.SelectStateHaki = value
+ end)
+ 
+ Misc:Button("Change Buso Haki State",function()
+     if _G.SelectStateHaki == "State 0" then
+         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",0)
+     elseif _G.SelectStateHaki == "State 1" then
+         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",1)
+     elseif _G.SelectStateHaki == "State 2" then
+         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",2)
+     elseif _G.SelectStateHaki == "State 3" then
+         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",3)
+     elseif _G.SelectStateHaki == "State 4" then
+         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",4)
+     elseif _G.SelectStateHaki == "State 5" then
+         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",5)
+     end
+ end)
+ 
+ Misc:Seperator("âœˆï¸ Boost FPS  âœˆï¸")
+ 
+ local a = game.Lighting
+ local c = Instance.new("ColorCorrectionEffect", a)
+ local e = Instance.new("ColorCorrectionEffect", a)
+ OldAmbient = a.Ambient
+ OldBrightness = a.Brightness
+ OldColorShift_Top = a.ColorShift_Top
+ OldBrightnessc = c.Brightness
+ OldContrastc = c.Contrast
+ OldTintColorc = c.TintColor
+ OldTintColore = e.TintColor
+
+ Misc:Toggle("RTX Mode",_G.RTXMode,function(value)
+     _G.RTXMode = value
+     if not _G.RTXMode then return end
+     while _G.RTXMode do wait()
+         a.Ambient = Color3.fromRGB(33, 33, 33)
+         a.Brightness = 0.3
+         c.Brightness = 0.176
+         c.Contrast = 0.39
+         c.TintColor = Color3.fromRGB(217, 145, 57)
+         game.Lighting.FogEnd = 999
+         if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("PointLight") then
+             local a2 = Instance.new("PointLight")
+             a2.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+             a2.Range = 15
+             a2.Color = Color3.fromRGB(217, 145, 57)
+         end
+         if not _G.RTXMode then
+             a.Ambient = OldAmbient
+             a.Brightness = OldBrightness
+             a.ColorShift_Top = OldColorShift_Top
+             c.Contrast = OldContrastc
+             c.Brightness = OldBrightnessc
+             c.TintColor = OldTintColorc
+             e.TintColor = OldTintColore
+             game.Lighting.FogEnd = 2500
+             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("PointLight"):Destroy()
+         end
+     end
+ end)
+ 
+ Misc:Toggle("Remove Fog",RemoveFog,function(value)
+     RemoveFog = value
+     if not RemoveFog then return end
+     while RemoveFog do wait()
+         game.Lighting.FogEnd = 9e9
+         if not RemoveFog then
+             game.Lighting.FogEnd = 2500
+         end
+     end
+ end)
+ 
+Misc:Toggle("Super FPS boost",false,function(value)
+      _G.SuperFPSboost = value
+ end)
+
+ spawn(function()
+     while wait() do
+    if _G.SuperFPSboost then
+     for i,v in pairs(game.Workspace.Map:GetDescendants()) do
+         if v.Name == "Tavern" or v.Name == "SmileFactory" or v.Name == "Tree" or v.Name == "Rocks" or v.Name == "PartHouse" or v.Name == "Hotel" or v.Name == "WallPiece" or v.Name == "MiddlePillars" or v.Name == "Cloud" or v.Name == "PluginGrass" or v.Name == "BigHouse" or v.Name == "SmallHouse" or v.Name == "Detail" then
+             v:Destroy()
+         end
+     end 
+     for i,v in pairs(game.ReplicatedStorage.Unloaded:GetDescendants()) do
+         if v.Name == "Tavern" or v.Name == "SmileFactory" or v.Name == "Tree" or v.Name == "Rocks" or v.Name == "PartHouse" or v.Name == "Hotel" or v.Name == "WallPiece" or v.Name == "MiddlePillars" or v.Name == "Cloud" or v.Name == "PluginGrass" or v.Name == "BigHouse" or v.Name == "SmallHouse" or v.Name == "Detail" then
+             v:Destroy()
+         end
+     end
+     for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+         if v:IsA("Accessory") or v.Name == "Pants" or v.Name == "Shirt" then
+             v:Destroy()
+         end
+     end
+     local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+     local g = game
+     local w = g.Workspace
+     local l = g.Lighting
+     local t = w.Terrain
+     t.WaterWaveSize = 0
+     t.WaterWaveSpeed = 0
+     t.WaterReflectance = 0
+     t.WaterTransparency = 0
+     l.GlobalShadows = false
+     l.FogEnd = 9e9
+     l.Brightness = 0
+     settings().Rendering.QualityLevel = "Level01"
+     for i, v in pairs(g:GetDescendants()) do
+         if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+             v.Material = "Plastic"
+             v.Reflectance = 0
+         elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+             v.Transparency = 1
+         elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+             v.Lifetime = NumberRange.new(0)
+         elseif v:IsA("Explosion") then
+             v.BlastPressure = 1
+             v.BlastRadius = 1
+         elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+             v.Enabled = false
+         elseif v:IsA("MeshPart") then
+             v.Material = "Plastic"
+             v.Reflectance = 0
+             v.TextureID = 10385902758728957
+         end
+     end
+     for i, e in pairs(l:GetChildren()) do
+         if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+             e.Enabled = false
+         end
+     end
+ end
+end
+end)
+if not game:GetService("UserInputService").TouchEnabled and not game:GetService("UserInputService").KeyboardEnabled == false then
+ Misc:Slider("FPS Lock",0,499,60,function(K)setfpscap(tonumber(K));
+ end)
+ else
+Misc:Slider("FPS Lock",0,499,60,function(K)setfpscap(tonumber(K));
+ end)
+end
+
+ Misc:Button("FPS Boost",function()
+     pcall(function()
+         game:GetService("Lighting").FantasySky:Destroy()
+         local g = game
+         local w = g.Workspace
+         local l = g.Lighting
+         local t = w.Terrain
+         t.WaterWaveSize = 0
+         t.WaterWaveSpeed = 0
+         t.WaterReflectance = 0
+         t.WaterTransparency = 0
+         l.GlobalShadows = false
+         l.FogEnd = 9e9
+         l.Brightness = 0
+         settings().Rendering.QualityLevel = "Level01"
+         for i, v in pairs(g:GetDescendants()) do
+             if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then 
+                 v.Material = "Plastic"
+                 v.Reflectance = 0
+             elseif v:IsA("Decal") or v:IsA("Texture") then
+                 v.Transparency = 1
+             elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                 v.Lifetime = NumberRange.new(0)
+             elseif v:IsA("Explosion") then
+                 v.BlastPressure = 1
+                 v.BlastRadius = 1
+             elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+                 v.Enabled = false
+             elseif v:IsA("MeshPart") then
+                 v.Material = "Plastic"
+                 v.Reflectance = 0
+                 v.TextureID = 10385902758728957
+             end
+         end
+         for i, e in pairs(l:GetChildren()) do
+             if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+                 e.Enabled = false
+             end
+         end
+         for i, v in pairs(game:GetService("Workspace").Camera:GetDescendants()) do
+             if v.Name == ("Water;") then
+                 v.Transparency = 1
+                 v.Material = "Plastic"
+             end
+         end
+     end)
+ end)
+
+  Misc:Button("Unlock Portal",function()
+     _G.UnlockPortal = true
+ end)
+ 
+ spawn(function()
+     while wait() do
+         pcall(function()
+             if _G.UnlockPortal == true then
+                 for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Notifications:GetChildren()) do
+                     if v.Name == "NotificationTemplate" then
+                         if string.find(v.Text,"cannot") then
+                             v:Destroy()
+                         end
+                     end
+                 end
+             end
+         end)
+     end
+ end)
+ 
+ spawn(function()
+     while wait() do
+         pcall(function()
+             if _G.UnlockPortal == true then
+                 CastlePostoMansion = CFrame.new(-5084.8447265625, 316.48101806641, -3145.3752441406)
+                 MansiontoCastlePos = CFrame.new(-12464.596679688, 376.30590820312, -7567.2626953125)
+                 Castletophydra = CFrame.new(-5095.33984375, 316.48101806641, -3168.3134765625)
+                 HydratoCastle = CFrame.new(5741.869140625, 611.94750976562, -282.61154174805)
+                 if (CastlePostoMansion.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                 end
+                 if (MansiontoCastlePos.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                 end
+                 if (Castletophydra.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                 end
+                 if (HydratoCastle.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                 end
+             end
+         end)
+     end
+ end)
+ 
+ Misc:Button("Unlock FPS",function()
+     setfpscap(500)
+ end)
+
+ Misc:Button("FPS delete color",function()
+for _,v in pairs(workspace:GetDescendants()) do
+if v.ClassName == "Part"
+or v.ClassName == "SpawnLocation"
+or v.ClassName == "WedgePart"
+or v.ClassName == "Terrain"
+or v.ClassName == "MeshPart" then
+v.BrickColor = BrickColor.new(155, 155, 155)
+v.Material = "Plastic"
+end
+end
+end)
+
+ Misc:Button("FPS Fast Mode",function()
+for _,v in pairs(workspace:GetDescendants()) do
+if v.ClassName == "Part"
+or v.ClassName == "SpawnLocation"
+or v.ClassName == "WedgePart"
+or v.ClassName == "Terrain"
+or v.ClassName == "MeshPart" then
+v.Material = "Plastic"
+end
+end
+end)
+
+ Misc:Seperator("Ability")
+
+ Misc:Toggle("Auto Active Race",_G.AutoAgility,function(value)
+     _G.AutoAgility = value
+ end)
+ 
+ spawn(function()
+     pcall(function()
+         while wait() do
+             if _G.AutoAgility then
+                 game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
+             end
+         end
+     end)
+ end)
+
+ if game.workspace:FindFirstChild("WaterWalk") then
+     game.workspace:FindFirstChild("WaterWalk"):Destroy()
+ end
+ platform = Instance.new("Part")
+ platform.Name = "WaterWalk"
+ platform.Size = Vector3.new(math.huge, 1, math.huge)
+ platform.Transparency = 1
+ platform.Anchored = true
+ platform.Parent = game.workspace
+Misc:Toggle("Walk on Water",true,function(value)
+     _G.WalkWater = value
+end)
+
+spawn(function()
+         while task.wait() do
+             pcall(function()
+                 if _G.WalkWater then
+                     game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
+                 else
+                     game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,80,1000)
+                 end
+             end)
+         end
+     end)
+
+Misc:Toggle("Dodge No Cooldown",false,function(value)
+     nododgecool = value
+     NoDodgeCool()
+ end)
+ if World1 or World2 then
+RaceV4:Label("You Are Not in Third Sea!!")
+end
+
+if World3 then
+ RaceV4:Seperator("ðŸ‘¾ Race V4 ðŸ‘¾")
+ 
+RaceV4:Button("Teleport To Top Of GreatTree",function()
+Tween(CFrame.new(2947.556884765625, 2281.630615234375, -7213.54931640625))
+ end)
+ 
+ RaceV4:Button("Teleport To Timple Of Time",function()
+Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+ end)
+ 
+RaceV4:Button("Teleport To Lever Pull",function()
+Tween(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
+end)
+
+RaceV4:Button("Teleport To Acient One (Must Be in Temple Of Time!)",function()
+Tween(CFrame.new(28981.552734375, 14888.4267578125, -120.245849609375))
+end)
+
+RaceV4:Button("Unlock Lever.", function()
+venyx:Notify("Unlocked")
+if game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt") then
+ game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
+else
+--[[]]
+end
+wait(0.1)
+local ProximityPrompt = Instance.new("ProximityPrompt")
+ProximityPrompt.Parent = game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt
+ProximityPrompt.MaxActivationDistance = 10
+ProximityPrompt.ActionText = "Secrets Beholds Inside"
+ProximityPrompt.ObjectText = "An unknown lever of time"
+
+function onProximity()
+local part = game:GetService("Workspace").Map["Temple of Time"].MainDoor1
+local TweenService = game:GetService("TweenService")
+
+local startPosition = part.Position
+local endPosition = startPosition + Vector3.new(0, -50, 0)
+
+local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+local tween = TweenService:Create(part, tweenInfo, {Position = endPosition})
+
+tween:Play()
+
+local partnew = game:GetService("Workspace").Map["Temple of Time"].MainDoor2
+local TweenService = game:GetService("TweenService")
+
+local startPosition = partnew.Position
+local endPosition = startPosition + Vector3.new(0, -50, 0)
+
+local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+local tween = TweenService:Create(partnew, tweenInfo, {Position = endPosition})
+
+tween:Play()
+
+local SoundSFX = Instance.new("Sound")
+SoundSFX.Parent = workspace
+SoundSFX.SoundId = "rbxassetid://1904813041"
+SoundSFX:Play()
+SoundSFX.Name = "POwfpxzxzfFfFF"
+game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
+wait(5)
+workspace:FindFirstChild("POwfpxzxzfFfFF"):Remove()
+game:GetService("Workspace").Map["Temple of Time"].NoGlitching:Remove()
+game:GetService("Workspace").Map["Temple of Time"].NoGlitching:Remove()
+game:GetService("Workspace").Map["Temple of Time"].NoGlitching:Remove()
+end
+
+ProximityPrompt.Triggered:Connect(onProximity)
+end)
+
+RaceV4:Button("Clock Acces", function()
+ game:GetService("Workspace").Map["Temple of Time"].DoNotEnter:Remove()
+ game:GetService("Workspace").Map["Temple of Time"].ClockRoomExit:Remove()
+end)
+
+RaceV4:Toggle("Disabled Inf Stairs", nil, function(value)
+ game.Players.LocalPlayer.Character.InfiniteStairs.Disabled = value
+end)
+
+RaceV4:Button("Teleport Cyborg Door (Must Be in Temple Of Time!)",function()
+Tween(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406))
+end)
+
+RaceV4:Button("Teleport Fish Door (Must Be in Temple Of Time!)",function()
+Tween(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922))
+end)
+
+RaceV4:Button("Teleport Ghoul Door (Must Be in Temple Of Time!)",function()
+Tween(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719))
+end)
+
+RaceV4:Button("Teleport Human Door (Must Be in Temple Of Time!)",function()
+Tween(CFrame.new(29237.294921875, 14889.4267578125, -206.94955444335938))
+end)
+
+RaceV4:Button("Teleport Mink Door (Must Be in Temple Of Time!)",function()
+Tween(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969))
+end)
+
+RaceV4:Button("Teleport Sky Door (Must Be in Temple Of Time!)",function()
+Tween(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188))
+end)
+
+RaceV4:Seperator("ðŸƒ Auto Complete Trials ðŸƒ")
+
+RaceV4:Button("Auto Upgrade Tier",function(t)
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer('UpgradeRace','Buy')
+end)
+
+RaceV4:Button("Auto Complete Angel Trial",function(t)
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame
+     end)
+
+     RaceV4:Button("Auto Complete Rabbit Trial",function(t)
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.MinkTrial.Ceiling.CFrame * CFrame.new(0,-5,0)
+     end)
+
+     RaceV4:Button("Auto Complete Cyborg Trial",function(t)
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,300,0)
+     end)
+     end
